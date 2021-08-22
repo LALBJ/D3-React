@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { Circles } from './Circles'
+import { AxisPro } from './AxisPro'
 import reportWebVitals from './reportWebVitals';
+import ComposableMap from './components/ComposableMap';
+import Geographies from './components/Geographies';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Circles />
+    <ComposableMap>
+      <Geographies />
+    </ComposableMap>
   </React.StrictMode>,
   document.getElementById('root')
 );
