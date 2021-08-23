@@ -12,12 +12,27 @@ const Geographies = ({
     ...restProps
 }) => {
     const { path, projection } = useContext(MapContext)
-    const { georaphies,  }
+    const { geographies, outline, borders } = useGeographies({ geography, parseGeographies })
+
     return (
-        <g>
-            <rect width="200px" height="200px"/>
+        <g className={`rsm-geographies ${className}`} {...restProps}>
+            {
+            geographies && geographies.length > 0 &&
+            children({ geographies, outline, borders, path, projection })
+            }
         </g>
     )
 }
+
+Geographies.propTypes = {
+    geography: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+    children: PropTypes.func,
+    parseGeographies: PropTypes.func,
+    className: PropTypes.string,
+  }
 
 export default Geographies

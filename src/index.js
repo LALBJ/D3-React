@@ -6,13 +6,21 @@ import { AxisPro } from './AxisPro'
 import reportWebVitals from './reportWebVitals';
 import ComposableMap from './components/ComposableMap';
 import Geographies from './components/Geographies';
+import Geography from './components/Geography';
+
+const geoUrl =
+  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <div>
     <ComposableMap>
-      <Geographies />
+      <Geographies geography={geoUrl}>
+        {({ geographies }) =>
+          geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+        }
+      </Geographies>
     </ComposableMap>
-  </React.StrictMode>,
+  </div>,
   document.getElementById('root')
 );
 

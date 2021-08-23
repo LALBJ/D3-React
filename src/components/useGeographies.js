@@ -15,6 +15,7 @@ export default function useGeographies({ geography, parseGeographies }) {
         if (isString(geography)) {
             fetchGeographies(geography).then(geos => {
                 if (geos) {
+                    console.log(geos)
                     setOutput({
                       geographies: getFeatures(geos, parseGeographies),
                       mesh: getMesh(geos),
